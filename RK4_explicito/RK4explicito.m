@@ -32,6 +32,7 @@ function [u,t]=RK4explicito(f,tf,t0,N,u0,b,c,A)
 			% En la siguiente linea nos apoyamos en que el método es explícito
 			% logrando así un ahorro en el número de operaciones.
 			k(:,i)=f(t(n)+c(i)*h,u(:,n)+h*k(:,1:i-1)*transpose(A(i,1:i-1)));
+			% k(:,i)=f(t(n)+c(i)*h,u(:,n)+h*k*transpose(A(i,:)));
 		end
 		u(:,n+1)=u(:,n)+h*k*b;
 	end
