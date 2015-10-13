@@ -1,0 +1,62 @@
+\documentclass[nochap]{apuntes}
+\title{Métodos numéricos para EDO}
+\author{Pedro Valero}
+\date{13-10-2015}
+
+% Paquetes adicionales
+\usepackage{tikztools}
+\usepackage{fastbuild}
+\usepackage{booktabs}
+\usetikzlibrary{arrows}
+
+\begin{document}
+%\maketitle
+\pagestyle{plain}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%         Práctica 1
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Primer apartado}
+Una vez programados y ejecutados los métodos mencionados de Adams-Moulton y de Euler con los datos iniciales dados en el enunciado podemos comprobar que la previsión para la humanidad en caso de desatarse el apocalipsis es:
+
+\begin{center}
+\begin{tabular}{lccc}    \toprule
+Método    & Humanos (S)  & Zombies (Z)  & Muertos infectados (R)  \\ \midrule
+Adams-Moulton & $6 \cdot 10^{-6}$ & 239,05 & 262,97\\ 
+Euler & $2 \cdot 10^{-6}$ & 239,06 & 262,96\\\bottomrule
+ \hline
+\end{tabular}
+\end{center}
+
+Podemos ver que el resultado es el mismo con ambos métodos, como era de esperar. Hay una mínima diferencia en la cantidad de humanos restante pero no es significativa puesto que es del orden de $10^{-6}$.
+
+El problema que estamos considerando no permite la generación de ningún tipo de criatura de la nada. Por tanto, el número total de individuos se mantiene constante, como puede observarse en los resultados obtenidos.
+
+La suma de individuos que obtenemos no es exactamente 502 (como son los individuos originales) pero dista muy poco y esta diferencia se debe a los errores de redondeo introducidos en cada iteración.
+
+\section{Segundo apartado}
+
+Si al finalizar el día la población de zombies se ve reducida al a mitad, el problema a resolver pasa a tener como segunda ecuación:
+\[\frac{\dif Z}{\dif t} = βSZ + ςR - αSZ -\frac{Z + βSZ + ςR - αSZ}{2}\]
+puesto que estamos considerando que $t$ se mide en días.
+
+Con esta modificación obtenemos la siguiente previsión
+
+\begin{center}
+\begin{tabular}{lccc}    \toprule
+Método    & Humanos (S)  & Zombies (Z)  & Muertos infectados (R)  \\ \midrule
+Adams-Moulton & 110,83 & 15,075 & 204,809\\ 
+Euler & 100,594 & 12,267 & 210,197\\\bottomrule
+ \hline
+\end{tabular}
+\end{center}
+
+lo que supone un futuro mucho más esperanzador para la raza humana.
+
+\section{Tercer apartado}
+
+
+
+\end{document}

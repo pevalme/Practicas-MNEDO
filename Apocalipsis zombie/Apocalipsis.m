@@ -2,7 +2,7 @@
 u0 = [500,2,0];
 t0 = 0;
 tf = 10;
-N = 1000;
+N = 500;
 
 % Empleamos el método de Euler
 [u,t] = Euler(@f, N, t0, tf, u0);
