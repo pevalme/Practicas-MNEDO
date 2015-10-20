@@ -38,17 +38,15 @@ La suma de individuos que obtenemos no es exactamente 502 (como son los individu
 
 \section{Segundo apartado}
 
-Si al finalizar el día la población de zombies se ve reducida al a mitad, el problema a resolver pasa a tener como segunda ecuación:
-\[\frac{\dif Z}{\dif t} = βSZ + ςR - αSZ -\frac{Z + βSZ + ςR - αSZ}{2}\]
-puesto que estamos considerando que $t$ se mide en días.
+Si al finalizar el día la población de zombies se ve reducida al a mitad, el problema puede modelarse como 10 PVI diferentes (puesto que estamos simulando 10 días)
 
 Con esta modificación obtenemos la siguiente previsión
 
 \begin{center}
 \begin{tabular}{lccc}    \toprule
 Método    & Humanos (S)  & Zombies (Z)  & Muertos infectados (R)  \\ \midrule
-Adams-Moulton & 110,83 & 15,075 & 204,809\\ 
-Euler & 100,594 & 12,267 & 210,197\\\bottomrule
+Adams-Moulton & 0,40603 & 1,28712 & 500,99808\\ 
+Euler & 3,9881 $\cdot 10^{-1}$ & 9,9956 $\cdot 10^{-2}$ & 5,0268$\cdot 10^2$\\\bottomrule
  \hline
 \end{tabular}
 \end{center}
@@ -56,7 +54,23 @@ Euler & 100,594 & 12,267 & 210,197\\\bottomrule
 lo que supone un futuro mucho más esperanzador para la raza humana.
 
 \section{Tercer apartado}
+En esta práctica estamos resolviendo el siguiente PVI:
+\[\left\{ \begin{array}{lll}
+y_1'& = & -0.0095y_1y_2\\ 
+y_2'& = & 0.0095y_1y_2 + 0.0001y_3 - 0.005y_1y_2\\ 
+y_3'& = & 0.005y_1y_2-0.0001y_3\\ 
+y(0)& = & (500,2,0)  
+\end{array}\right.\]
 
+Por tanto, la función con la que estamos trabajando es:
+\[f(x,y)=(-0.0095y_1y_2,0.0095y_1y_2 + 0.0001y_3 - 0.005y_1y_2,0.005y_1y_2-0.0001y_3)\]
+
+Es evidente que esta función es continua puesto que cada coordenada no es más que un polinomio. Veamos si es o no Lipschitz en la segunda variable.
+
+\[\norm{f(x,y)-f(x,\tilde{y})} =\norm{\left(0.0095(y_1y_2-\tilde{y}_1\tilde{y}_2), 0.0045(y_1y_2-\tilde{y}_1\tilde{y}_2) + 0.0001(y_3-\tilde{y}_3),\atop0.005(y_1y_2-\tilde{y}_1\tilde{y}_2)-0.0001(y_3-\tilde{y}_3) \right)}=\]
+\[=\sqrt{0.0095^2(y_1y_2-\tilde{y}_1\tilde{y}_2)^2 + \left(0.0045(y_1y_2-\tilde{y}_1\tilde{y}_2) + 0.0001(y_3-\tilde{y}_3) \right)^2 + \atop \left(0.005(y_1y_2-\tilde{y}_1\tilde{y}_2)-0.0001(y_3-\tilde{y}_3)\right)^2}=\]
+
+\[=\sqrt{1.3 \cdot 10^{-4}(y_1y_2-\tilde{y}_1\tilde{y}_2)^2 + 2\cdot 10^{-8} (y_3-\tilde{y}_3)^2 + 1\cdot 10^{-7} (y_3-\tilde{y}_3)(y_1y_2-\tilde{y}_1\tilde{y}_2)} = \]
 
 
 \end{document}
