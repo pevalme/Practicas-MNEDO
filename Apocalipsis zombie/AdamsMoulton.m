@@ -35,7 +35,7 @@ function [u,t]=AdamsMoulton(f,tf,t0,N,u0)
 	for n=1:N-2
 		% Para cada k_n debemos precedir k_{n+2}
 		kApprox = u(:,n+1) + h/2*(3*f(t(n+1),u(:,n+1))-f(t(n),u(:,n)));
-		% Trabajamos con el valor predico y obtenemos el valor que vamos a usar
+		% Trabajamos con el valor predicho y obtenemos el valor que vamos a usar
 		u(:,n+2) = u(:,n+1) + h/12*(5*f(t(n+2),kApprox)+8*f(t(n+1),u(:,n+1))-f(t(n),u(:,n)));
 	end
 
