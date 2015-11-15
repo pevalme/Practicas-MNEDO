@@ -25,7 +25,7 @@ function [u,t]=trapecio(f,tf,t0,N,u0,r)
 
 	for n=1:N
 		% Variable auxiliar donde guardaremos los valores necesarios
-		% para aproximar u_n por el método del punto fijo.
+		% para aproximar u_{n+1} por el método del punto fijo.
 		b1=zeros(length(u0),1);
 		b0=u(:,n);
 		err=r+1;

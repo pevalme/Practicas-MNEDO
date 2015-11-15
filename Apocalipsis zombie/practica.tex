@@ -91,4 +91,31 @@ con lo que tendríamos:
 \[0.011(ε^2+ε(y_1-y_2)) \leq 0.11(ε^2+ε(DI))\leq Cε = C\sqrt{ε^2+ε^2}\]
 donde $DI$ es la suma de las coordenadas del dato inicial.
 
+Veamos ahora el caso general.
+
+\[\norm{f(x,y)-f(x,\tilde{y})} = \sqrt{0.0095^2(y_1y_2-\tilde{y}_1\tilde{y}_2)^2 + \left(0.0045(y_1y_2-\tilde{y}_1\tilde{y}_2) + 0.0001(y_3-\tilde{y}_3) \right)^2 + \atop \left(0.005(y_1y_2-\tilde{y}_1\tilde{y}_2)-0.0001(y_3-\tilde{y}_3)\right)^2} \leq \]
+
+\[\leq α_1\abs{(y_1y_2-\tilde{y}_1\tilde{y}_2)} + \abs{α_2(y_1y_2-\tilde{y}_1\tilde{y}_2) + α_3(y_3-\tilde{y}_3)} + \abs{α_4(y_1y_2-\tilde{y}_1\tilde{y}_2)-α_5(y_3-\tilde{y}_3)} \leq \]
+
+\[\leq α_1\abs{y_1y_2-\tilde{y}_1\tilde{y}_2} + α_2\abs{y_1y_2-\tilde{y}_1\tilde{y}_2} + α_3\abs{y_3-\tilde{y}_3} + α_4\abs{y_1y_2-\tilde{y}_1\tilde{y}_2}+α_5\abs{y_3-\tilde{y}_3} \]
+
+Por otro lado podemos ver que, siendo
+\[\begin{array}{ll} 
+\tilde{y}_1 = y_1 \pm a & \implies a =\abs{y_1-\tilde{y}_1}< 1\\
+\tilde{y}_2 = y_2 \pm b & \implies b=\abs{y_2-\tilde{y}_2} < 1\\
+\tilde{y}_3 = y_3 \pm c & \implies c=\abs{y_3-\tilde{y}_3} < 1
+\end{array}\]
+podemos escribir:
+\[\abs{y_1y_2-\tilde{y}_1\tilde{y}_2} = \abs{\pm ab \pm y_1b \pm y_2 a} \leq \abs{ab}+\abs{y_1}b + \abs{y_2}a\]
+y, puesto que las $y_i$ han de tener suma constante igual a 500 y ser positivas, es sencillo ver que $y_i<500$.
+
+Por tanto llegamos a:
+\[\abs{y_1y_2-\tilde{y}_1\tilde{y}_2} \leq ab+β_1a + β_2b \leq a+β_1a + β_2b\]
+donde la última desigualdad se deriva del hecho de que estamos considerando errores pequeños, menores que 1.
+
+Finalmente, volviendo a nuestra desigualdad para la diferencia de las $f$ tenemos:
+\[\norm{f(x,y)-f(x,\tilde{y})}  \leq (a+β_1a+β_2b)(α_1+α_2+α_4) + c(α_3+α_5)\]
+donde todas las constantes son mayores que 0. Finalmente, agrupando términos tenemos:
+\[\norm{f(x,y)-f(x,\tilde{y})} \leq K(a+b+c) \text{ con } k =\max\{α_1+α_2+α_4+β_1,α_1+α_2+α_4+β_2,α_3+α_5\}\]
+que es justo lo que queríamos demostrar para ver que la función es Lipschitz en la segunda variable.
 \end{document}
