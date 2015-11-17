@@ -45,8 +45,8 @@ Con esta modificación obtenemos la siguiente previsión
 \begin{center}
 \begin{tabular}{lccc}    \toprule
 Método    & Humanos (S)  & Zombies (Z)  & Muertos infectados (R)  \\ \midrule
-Adams-Moulton & 0,40603 & 1,28712 & 500,99808\\
-Euler & 3,9881 $\cdot 10^{-1}$ & 9,9956 $\cdot 10^{-2}$ & 5,0268$\cdot 10^2$\\\bottomrule
+Adams-Moulton & 24,1652 & 4.6630 & 473,4431\\
+Euler & 24.3955 & 4.8633  & 473,0197\\\bottomrule
  \hline
 \end{tabular}
 \end{center}
@@ -130,7 +130,7 @@ Por último viendo que entre $a$, $b$ y $c$ uno o dos de ellos han de ser negati
 \item Sólo uno de ellos es negativo, digamos $c$. Entonces
 \[α_3|c||a||b| = α_1ab|c| \leq α_1|c|c^2 \]
 \item Dos de los valores, digamos $a$ y $b$ son negativos. Entonces
-\[α_3|c||a||b|=α_3abc \leq α_3|a|a^2\]
+\[α_3|c||a||b|=α_3abc \leq α_3cc^2\]
 \end{itemize}
 En cualquier caso hemos podido acotar el término por una constante positiva $K_k$ multiplicada por uno de los errores al cuadrado.
 

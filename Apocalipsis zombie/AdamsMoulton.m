@@ -1,5 +1,5 @@
 function [u,t]=AdamsMoulton(f,tf,t0,N,u0)
-% 
+%
 % Esta función implementa el método numérico Adams-Moulton de dos pasos
 % para resolver el problema de valor inicial:
 %	u'=f(t,u)
@@ -30,9 +30,9 @@ function [u,t]=AdamsMoulton(f,tf,t0,N,u0)
 	% [uAux, tAux] = Euler(@f, N, t0, t0+1, u0);
 	% u(:,2) = uAux(:,N);
 
-	u(:,2) = u(:,1) + f(t0,u0); % Comprobar si esta es la forma correcta de calcular este valor.
+	u(:,2) = u(:,1) + h*f(t0,u0); % Comprobar si esta es la forma correcta de calcular este valor.
 
-	% Inicializamos la variable donde guardaremos la aproximación de k_{n+2} 
+	% Inicializamos la variable donde guardaremos la aproximación de k_{n+2}
 	% con ceros
 	kApprox = zeros(s,1);
 
