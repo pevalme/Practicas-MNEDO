@@ -24,7 +24,7 @@ Una vez programados y ejecutados los métodos mencionados de Adams-Moulton y de 
 \begin{center}
 \begin{tabular}{lccc}    \toprule
 Método    & Humanos (S)  & Zombies (Z)  & Muertos infectados (R)  \\ \midrule
-Adams-Moulton & $6 \cdot 10^{-6}$ & 239,05 & 262,97\\ 
+Adams-Moulton & $6 \cdot 10^{-6}$ & 239,05 & 262,97\\
 Euler & $2 \cdot 10^{-6}$ & 239,06 & 262,96\\\bottomrule
  \hline
 \end{tabular}
@@ -45,7 +45,7 @@ Con esta modificación obtenemos la siguiente previsión
 \begin{center}
 \begin{tabular}{lccc}    \toprule
 Método    & Humanos (S)  & Zombies (Z)  & Muertos infectados (R)  \\ \midrule
-Adams-Moulton & 0,40603 & 1,28712 & 500,99808\\ 
+Adams-Moulton & 0,40603 & 1,28712 & 500,99808\\
 Euler & 3,9881 $\cdot 10^{-1}$ & 9,9956 $\cdot 10^{-2}$ & 5,0268$\cdot 10^2$\\\bottomrule
  \hline
 \end{tabular}
@@ -56,10 +56,10 @@ lo que supone un futuro mucho más esperanzador para la raza humana.
 \section{Tercer apartado}
 En esta práctica estamos resolviendo el siguiente PVI:
 \[\left\{ \begin{array}{lll}
-y_1'& = & -0.0095y_1y_2\\ 
-y_2'& = & 0.0095y_1y_2 + 0.0001y_3 - 0.005y_1y_2\\ 
-y_3'& = & 0.005y_1y_2-0.0001y_3\\ 
-y(0)& = & (500,2,0)  
+y_1'& = & -0.0095y_1y_2\\
+y_2'& = & 0.0095y_1y_2 + 0.0001y_3 - 0.005y_1y_2\\
+y_3'& = & 0.005y_1y_2-0.0001y_3\\
+y(0)& = & (500,2,0)
 \end{array}\right.\]
 
 Por tanto, la función con la que estamos trabajando es:
@@ -76,7 +76,7 @@ Es sencillo ver que la función no es globalmente Lipschitz. Para ello basta con
 \[\begin{array}{l}y_1, y_2 < 0, y_3 \in \real \\
 \tilde{y}_1 = y_1 + ε, \tilde{y}_2 = y_2 + δ, \tilde{y}_3 = y_3\end{array} \implies \norm{f(x,y)-f(x,\tilde{y})} = 0.011(-y_1δ-y_2ε+εδ)\]
 
-Si la función fuese Lipschitz tendríamos que 
+Si la función fuese Lipschitz tendríamos que
 \[ 0.011(-y_1δ-y_2ε+εδ) \leq C \sqrt{ε^2+δ^2}\]
 pero es sencillo ver que esto es imposible puesto que ε y δ serán tan pequeños como deseemos y ``constantes'' mientras que $y_1,y_2$ pueden hacerse tan grandes como queramos.
 
@@ -93,29 +93,49 @@ donde $DI$ es la suma de las coordenadas del dato inicial.
 
 Veamos ahora el caso general.
 
-\[\norm{f(x,y)-f(x,\tilde{y})} = \sqrt{0.0095^2(y_1y_2-\tilde{y}_1\tilde{y}_2)^2 + \left(0.0045(y_1y_2-\tilde{y}_1\tilde{y}_2) + 0.0001(y_3-\tilde{y}_3) \right)^2 + \atop \left(0.005(y_1y_2-\tilde{y}_1\tilde{y}_2)-0.0001(y_3-\tilde{y}_3)\right)^2} \leq \]
+Por comodidad vamos a definir:
+\[\begin{array}{ll}
+α_1 = 1.3 \cdot 10^{-4} &a = \tilde{y}_1 - y_1 \implies \tilde{y}_1 = y_1 + a\\
+α_2 = 2\cdot 10^{-8} &b = \tilde{y}_2 - y_2    \implies \tilde{y}_2 = y_2 + b\\
+α_3 = 10^{-7} & c = \tilde{y}_3-y_3 \implies \tilde{y}_3 = y_3
++ c\end{array}\implies a+b+c = 0\]
 
-\[\leq α_1\abs{(y_1y_2-\tilde{y}_1\tilde{y}_2)} + \abs{α_2(y_1y_2-\tilde{y}_1\tilde{y}_2) + α_3(y_3-\tilde{y}_3)} + \abs{α_4(y_1y_2-\tilde{y}_1\tilde{y}_2)-α_5(y_3-\tilde{y}_3)} \leq \]
+y reordenamos las variables escribiendo:
+\[\norm{f(x,\tilde{y})-f(x,y)} = \sqrt{α_1(\tilde{y}_1\tilde{y}_2-y_1y_2)^2 + α_2 (\tilde{y}_3-y_3)^2 + α_3 (\tilde{y}_3-y_3)(\tilde{y}_1\tilde{y}_2-y_1y_2)}=\]
+\[= \sqrt{α_1(y_1b+y_2a+ab)^2 + α_2c^2 + α_3c(y_1b+y_2a+ab)}=\]
+\[=\sqrt{α_1y_1^2b^2+α_1y_2^2a^2+α_1a^2b^2+2α_1y_1y_2ab+2α_1y_1b^2a+2α_1y_2a^2b+α_2c^2+\atop α_3cy_1b+α_3cy_2a+α_3cab}\]
 
-\[\leq α_1\abs{y_1y_2-\tilde{y}_1\tilde{y}_2} + α_2\abs{y_1y_2-\tilde{y}_1\tilde{y}_2} + α_3\abs{y_3-\tilde{y}_3} + α_4\abs{y_1y_2-\tilde{y}_1\tilde{y}_2}+α_5\abs{y_3-\tilde{y}_3} \]
+Puesto que $α_i > 0$ y los cuadrados también, podemos definir:
+\[K=\max\{α_1y_1^2+α_1a^2,α_1y_2^2,α_2\}\]
+que sabemos que es finito pues las $α_i$ son constantes y los valores de $y_1,a,b,c$ están acotados por la suma de las coordenadas del dato inicial, DI.
 
-Por otro lado podemos ver que, siendo
-\[\begin{array}{ll} 
-\tilde{y}_1 = y_1 \pm a & \implies a =\abs{y_1-\tilde{y}_1}< 1\\
-\tilde{y}_2 = y_2 \pm b & \implies b=\abs{y_2-\tilde{y}_2} < 1\\
-\tilde{y}_3 = y_3 \pm c & \implies c=\abs{y_3-\tilde{y}_3} < 1
-\end{array}\]
-podemos escribir:
-\[\abs{y_1y_2-\tilde{y}_1\tilde{y}_2} = \abs{\pm ab \pm y_1b \pm y_2 a} \leq \abs{ab}+\abs{y_1}b + \abs{y_2}a\]
-y, puesto que las $y_i$ han de tener suma constante igual a 500 y ser positivas, es sencillo ver que $y_i<500$.
+A partir de esto podemos escribir
+\[\norm{f(x,\tilde{y})-f(x,y)} \leq \sqrt{K(a^2+b^2+c^2)+2α_1y_1y_2ab+2α_1y_1b^2a+2α_1y_2a^2b+\atop α_3cy_1b+α_3cy_2a+α_3cab}\]
 
-Por tanto llegamos a:
-\[\abs{y_1y_2-\tilde{y}_1\tilde{y}_2} \leq ab+β_1a + β_2b \leq a+β_1a + β_2b\]
-donde la última desigualdad se deriva del hecho de que estamos considerando errores pequeños, menores que 1.
+Por otro lado podemos deducir
+\[a+b+c = 0 \implies a+b = -c \implies (a+b)^2 = c^2 \implies a^2 +b^2+2ab = c^2 \implies 2ab < c^2 \]
 
-Finalmente, volviendo a nuestra desigualdad para la diferencia de las $f$ tenemos:
-\[\norm{f(x,y)-f(x,\tilde{y})}  \leq (a+β_1a+β_2b)(α_1+α_2+α_4) + c(α_3+α_5)\]
-donde todas las constantes son mayores que 0. Finalmente, agrupando términos tenemos:
-\[\norm{f(x,y)-f(x,\tilde{y})} \leq K(a+b+c) \text{ con } k =\max\{α_1+α_2+α_4+β_1,α_1+α_2+α_4+β_2,α_3+α_5\}\]
-que es justo lo que queríamos demostrar para ver que la función es Lipschitz en la segunda variable.
+Con una demostración similar podemos ver que
+\[2bc < a^2 \text{ y que } 2ac < b^2\]
+Por tanto, en aquellos lugares donde tengamos $ab$, $ac$ o $cb$ multiplicado por algo positivo podremos acotar obteniendo:
+\[\norm{f(x,\tilde{y})-f(x,y)}\leq \sqrt{K(a^2+b^2+c^2)+α_1y_1y_2c^2+2α_1y_1b^2a+2α_1y_2a^2b+\atop α_3y_1a^2+α_3y_2b^2+α_3cab}\]
+
+Tomando algún valor absoluto y agrupando podemos escribir:
+\[\norm{f(x,\tilde{y})-f(x,y)}\leq \sqrt{K_1(a^2+b^2+c^2)c^2+2α_1y_1b^2|a|+2α_1y_2a^2|b|+α_3|c||a||b|}\]
+con
+\[K_1 = K+\max\{α_1y_1y_2,α_3y_1,α_3y_2\}\]
+
+Por último viendo que entre $a$, $b$ y $c$ uno o dos de ellos han de ser negativos (no pueden serlo todos ni ninguno pues la suma no sería 0) tenemos diferentes casos:
+\begin{itemize}
+\item Sólo uno de ellos es negativo, digamos $c$. Entonces
+\[α_3|c||a||b| = α_1ab|c| \leq α_1|c|c^2 \]
+\item Dos de los valores, digamos $a$ y $b$ son negativos. Entonces
+\[α_3|c||a||b|=α_3abc \leq α_3|a|a^2\]
+\end{itemize}
+En cualquier caso hemos podido acotar el término por una constante positiva $K_k$ multiplicada por uno de los errores al cuadrado.
+
+Finalmente tenemos
+\[\norm{f(x,\tilde{y})-f(x,y)} = \sqrt{K_2(a^2+b^2+c^2)}\]
+con
+\[K_2 = K_1 + \max\{2α_1y_1b^2,2α_1y_2a^2,K_k\}\]
 \end{document}
