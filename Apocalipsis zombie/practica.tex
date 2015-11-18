@@ -36,6 +36,36 @@ El problema que estamos considerando no permite la generación de ningún tipo d
 
 La suma de individuos que obtenemos no es exactamente 502 (como son los individuos originales) pero dista muy poco y esta diferencia se debe a los errores de redondeo introducidos en cada iteración.
 
+Veamos qué ocurre a nivel teórico:
+\begin{itemize}
+\item \textbf{Método de Euler}
+\[y_{n+1}=y_n+hf(x_n,y_n) = \left(S-hβSZ,Z+h(βSZ+λR-αSZ),R+h(αSZ-λR)\right)\]
+
+Sumando los términos de $y_{n+1}$ es:
+\[S-hβSZ+Z+h(βSZ+λR-αSZ)+R+h(αSZ-λR) = S+Z+R\]
+que es la suma de los términos en $y_n$.
+
+Con lo que podemos ver que el método de Euler respetará (en teoría) la variación de $R+Z+S$ de forma exacta.
+
+\item \textbf{Método de Adams-Moulton}
+Definimos la función $g(y)=y_1+y_2+y_3)$.
+
+Es obvio que $g(y_1)=g(y_0)$ pues sólo estamos imitando un paso del método de Euler.
+
+Es sencillo ver que $g(f(x_n,y_n))=0$.
+
+Supongamos ahora que $\forall n < N g(y_n)=g(y_0)$. Veamos qué pasa con $y_{N}$.
+
+Lo primero que hacemos es realizar una aproximación de $y_{N}$, pues estamos empleando el método de Adams-Brashforth.
+
+Podemos ver que
+\[g(y_{N})=g(y_{N-1})+0\]
+
+Tras esto empleamos el método en sí para obtener
+\[g(y_N)=g(y_{N-1})+0=g(y_0)\]
+
+Queda claro por tanto que este método también conserva siempre el valor de $R+S+Z$ a nivel teórico.
+
 \section{Segundo apartado}
 
 Si al finalizar el día la población de zombies se ve reducida al a mitad, el problema puede modelarse como 10 PVI diferentes (puesto que estamos simulando 10 días)

@@ -2,7 +2,7 @@
 u0 = [500,2,0];
 t0 = 0;
 tf = 10;
-N = 500;
+N = 5000;
 
 disp("Apartado a)");
 % Empleamos el método de Euler
