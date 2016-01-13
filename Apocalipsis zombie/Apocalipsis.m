@@ -2,7 +2,7 @@
 u0 = [500,2,0];
 t0 = 0;
 tf = 10;
-N = 5000;
+N = 500;
 
 disp("Apartado a)");
 % Empleamos el método de Euler
@@ -24,14 +24,14 @@ disp("Euler=>[S,Z,R]="),disp(u(:,N)');
 [u,t] = AdamsMoulton(@f, tf, t0, N, u0);
 t(end) = [];
 
-figure(2); hold all;
+figure(1); hold all;
 title(['Adams Moulton']);
 plot(t,u(1,:)); hold all;
 
-figure(2); hold all;
+figure(1); hold all;
 plot(t,u(2,:)); hold all;
 
-figure(2); hold all;
+figure(1); hold all;
 plot(t,u(3,:)); hold all;
 
 disp("Adams-Moulton=>[S,Z,R]="),disp(u(:,N)');
@@ -64,14 +64,14 @@ uAux = u0;
 for t=(t0+1):tf
 	[u,t] = AdamsMoulton(@f,t,t-1,N/(tf-t0),uAux);
 	t(end) = [];
-	figure(3); hold all;
+	figure(4); hold all;
 	title(['Adams Moulton matanza nocturna']);
 	plot(t,u(1,:),'r'); hold all;
 
-	figure(3); hold all;
+	figure(4); hold all;
 	plot(t,u(2,:),'b'); hold all;
 
-	figure(3); hold all;
+	figure(4); hold all;
 	plot(t,u(3,:),'g'); hold all;
 
 	uAux = u(:,N/(tf-t0))';
